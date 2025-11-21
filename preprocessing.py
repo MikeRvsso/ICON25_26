@@ -1,183 +1,123 @@
 import pandas as pd
-import numpy as np
-import os
 
-class DataPreprocessor:
-    def __init__(self, filepath=None, df=None):
-        """
-        Initialize the DataPreprocessor with a file path or a DataFrame.
-        """
-        self.df = df
-        if filepath:
-            self.load_data(filepath)
+# ==========================================
+# 1. CARICAMENTO DEL DATASET
+# ==========================================
+# Sostituisci 'nome_del_tuo_file.csv' con il nome reale del tuo file.
 
-    def load_data(self, filepath):
-        """
-        Load data from a CSV or Excel file.
-        """
-        try:
-            if filepath.endswith('.csv'):
-                self.df = pd.read_csv(filepath)
-            elif filepath.endswith(('.xls', '.xlsx')):
-                self.df = pd.read_excel(filepath)
-            else:
-                print(f"Unsupported file format: {filepath}")
-                return
-            print(f"Successfully loaded data from {filepath}")
-            print(f"Shape: {self.df.shape}")
-        except Exception as e:
-            print(f"Error loading data: {e}")
-
-    def check_duplicates(self):
-        """
-        Check for and report duplicated rows.
-        """
-        if self.df is None:
-            print("No data loaded.")
-            return 0
-        
-        duplicates = self.df.duplicated().sum()
-        print(f"Number of duplicated rows: {duplicates}")
-        return duplicates
-
-    def remove_duplicates(self):
-        """
-        Remove duplicated rows.
-        """
-        if self.df is None:
-            print("No data loaded.")
-            return
-
-        initial_rows = len(self.df)
-        self.df.drop_duplicates(inplace=True)
-        removed_rows = initial_rows - len(self.df)
-        print(f"Removed {removed_rows} duplicated rows.")
-
-    def check_missing_values(self):
-        """
-        Check for missing values in each column.
-        """
-        if self.df is None:
-            print("No data loaded.")
-            return
-
-        missing = self.df.isnull().sum()
-        missing = missing[missing > 0]
-        if missing.empty:
-            print("No missing values found.")
-        else:
-            print("Missing values per column:")
-            print(missing)
-            print("\nPercentage of missing values:")
-            print((missing / len(self.df)) * 100)
-
-    def handle_missing_values(self, strategy='drop', fill_value=None):
-        """
-        Handle missing values.
-        strategy: 'drop', 'mean', 'median', 'mode', 'constant'
-        """
-        if self.df is None:
-            print("No data loaded.")
-            return
-
-        if strategy == 'drop':
-            self.df.dropna(inplace=True)
-            print("Dropped rows with missing values.")
-        elif strategy == 'constant' and fill_value is not None:
-            self.df.fillna(fill_value, inplace=True)
-            print(f"Filled missing values with {fill_value}.")
-        elif strategy in ['mean', 'median', 'mode']:
-            # Apply only to numeric columns for mean/median
-            numeric_cols = self.df.select_dtypes(include=[np.number]).columns
-            
-            for col in self.df.columns:
-                if self.df[col].isnull().any():
-                    if col in numeric_cols:
-                        if strategy == 'mean':
-                            self.df[col].fillna(self.df[col].mean(), inplace=True)
-                        elif strategy == 'median':
-                            self.df[col].fillna(self.df[col].median(), inplace=True)
-                    else:
-                        # For categorical columns, mode is often used or just ignored if strategy is mean/median
-                        if strategy == 'mode':
-                            self.df[col].fillna(self.df[col].mode()[0], inplace=True)
-            print(f"Filled missing values using {strategy} strategy.")
-        else:
-            print(f"Unknown strategy: {strategy}")
-
-    def get_summary(self):
-        """
-        Print a summary of the dataset.
-        """
-        if self.df is None:
-            print("No data loaded.")
-            return
-
-        print("\n--- Dataset Info ---")
-        print(self.df.info())
-        print("\n--- Descriptive Statistics ---")
-        print(self.df.describe(include='all'))
-        print("\n--- Head ---")
-        print(self.df.head())
-
-    def save_data(self, output_path):
-        """
-        Save the processed DataFrame to a file.
-        """
-        if self.df is None:
-            print("No data loaded.")
-            return
-
-        try:
-            if output_path.endswith('.csv'):
-                self.df.to_csv(output_path, index=False)
-            elif output_path.endswith(('.xls', '.xlsx')):
-                self.df.to_excel(output_path, index=False)
-            else:
-                print("Unsupported output format. Saving as CSV.")
-                self.df.to_csv(output_path + '.csv', index=False)
-            print(f"Data saved to {output_path}")
-        except Exception as e:
-            print(f"Error saving data: {e}")
-
-if __name__ == "__main__":
-    # Example usage
-    # Create a dummy dataset for demonstration
-    data = {
-        'Name': ['Alice', 'Bob', 'Charlie', 'Alice', 'Eve', None],
-        'Age': [25, 30, 35, 25, 28, 22],
-        'Salary': [50000, 60000, None, 50000, 55000, 45000],
-        'City': ['New York', 'Los Angeles', 'Chicago', 'New York', None, 'Boston']
-    }
+# SE E' UN CSV (più comune):
+# A volte i CSV usano il punto e virgola ';' invece della virgola ','
+# Se ti dà errore, prova: pd.read_csv('...', sep=';')
+try:
+    df = pd.read_csv('../Dataset/amazon_delivery.csv') 
+    print("✅ File CSV caricato con successo!")
     
-    print("Creating a dummy dataset for demonstration...")
-    df_dummy = pd.DataFrame(data)
-    
-    # Initialize preprocessor with the dummy dataframe
-    preprocessor = DataPreprocessor(df=df_dummy)
-    
-    print("\n--- Initial Data ---")
-    print(preprocessor.df)
+except FileNotFoundError:
+    print("❌ Errore: File non trovato. Controlla il nome o il percorso.")
+    # Se non hai il file pronto, de-commenta la riga sotto per creare un dataframe vuoto di prova
+    # df = pd.DataFrame() 
 
-    print("\n--- Checking Duplicates ---")
-    preprocessor.check_duplicates()
-    
-    print("\n--- Removing Duplicates ---")
-    preprocessor.remove_duplicates()
-    
-    print("\n--- Checking Missing Values ---")
-    preprocessor.check_missing_values()
-    
-    print("\n--- Handling Missing Values (filling numeric with mean, categorical with mode) ---")
-    # Simple demonstration: fill numeric with mean
-    preprocessor.handle_missing_values(strategy='mean')
-    # Fill remaining categorical with mode
-    preprocessor.handle_missing_values(strategy='mode')
+# SE E' UN EXCEL (togli il commento '#' sotto se usi excel):
+# df = pd.read_excel('nome_del_tuo_file.xlsx')
 
-    print("\n--- Final Summary ---")
-    preprocessor.get_summary()
+
+# ==========================================
+# 2. ANALISI AUTOMATICA (CHECK-UP)
+# ==========================================
+
+if 'df' in locals(): # Esegue solo se il file è stato caricato
     
-    # To use with a real file, you would do:
-    # preprocessor = DataPreprocessor(filepath='path/to/your/data.csv')
-    # preprocessor.check_duplicates()
-    # ...
+    print("\n" + "="*40)
+    print("REPORT DI ANALISI DEL DATASET")
+    print("="*40 + "\n")
+
+    # --- A. SGUARDO GENERALE ---
+    print("--- 1. ANTEPRIMA DATI ---")
+    print(df.head()) # Mostra le prime 5 righe
+    
+    print("\n--- 2. DIMENSIONI ---")
+    rows, cols = df.shape
+    print(f"Righe: {rows}")
+    print(f"Colonne: {cols}")
+
+    # --- B. TIPI DI DATI ---
+    print("\n--- 3. INFO E TIPI DI DATI ---")
+    # Fondamentale per vedere se i numeri sono letti come testo (Object)
+    df.info() 
+
+    # --- C. VALORI MANCANTI ---
+    print("\n--- 4. CONTEGGIO CELLE VUOTE (NaN) ---")
+    missing = df.isnull().sum()
+    # Filtriamo per mostrare solo le colonne che hanno effettivamente buchi
+    print(missing[missing > 0]) 
+
+    # --- D. DUPLICATI ---
+    print("\n--- 5. RIGHE DUPLICATE ---")
+    duplicati = df.duplicated().sum()
+    print(f"Righe identiche trovate: {duplicati}")
+
+    # --- E. STATISTICHE RAPIDE ---
+    print("\n--- 6. STATISTICHE (Solo colonne numeriche) ---")
+    # Utile per beccare al volo numeri strani (es. Prezzo massimo altissimo)
+    print(df.describe())
+
+
+    # Mostra i valori unici presenti nella colonna Weather
+    print("--- Valori unici in Weather ---")
+    print(df['Weather'].unique())
+
+    # Filtriamo e stampiamo alcune delle righe dove Weather è vuoto
+    print("\n--- Esempio di righe con Weather mancante ---")
+    missing_weather = df[df['Weather'].isnull()]
+    print(missing_weather.head(5))
+
+    # ==========================================
+    # FASE DI CLEANING (PULIZIA)
+    # ==========================================
+    print("\n" + "="*40)
+    print("INIZIO PULIZIA DEL DATASET")
+    print("="*40 + "\n")
+
+    # Salvo il numero di righe iniziali per vedere quante ne togliamo
+    righe_iniziali = len(df)
+
+    # 1. GESTIONE METEO (WEATHER)
+    # Eliminiamo le righe dove Weather è NaN (Not a Number)
+    # subset=['Weather'] dice di controllare solo quella colonna
+    df = df.dropna(subset=['Weather'])
+    print(f"✅ Eliminate righe con Meteo mancante. (Righe attuali: {len(df)})")
+
+    # 2. GESTIONE ETA' (AGENT_AGE)
+    # Teniamo solo chi ha almeno 18 anni.
+    # Filtriamo via i 15enni (probabili errori di sistema)
+    df = df[df['Agent_Age'] >= 18]
+    print(f"✅ Eliminati fattorini minorenni (<18). (Righe attuali: {len(df)})")
+
+    # 3. GESTIONE RATING (AGENT_RATING)
+    # Qui invece di cancellare, riempiamo i buchi.
+    # Calcoliamo la mediana (valore centrale, più robusto della media contro gli outlier)
+    rating_mediano = df['Agent_Rating'].median()
+    print(f"ℹ️ Il Rating mediano calcolato è: {rating_mediano}")
+
+    # Riempiamo i NaN nella colonna Rating con questo valore
+    df['Agent_Rating'] = df['Agent_Rating'].fillna(rating_mediano)
+    print("✅ Riempiti i Rating mancanti con la mediana.")
+
+    # ==========================================
+    # VERIFICA FINALE
+    # ==========================================
+    print("\n" + "="*40)
+    print("VERIFICA POST-PULIZIA")
+    print("="*40 + "\n")
+
+    # Controlliamo se ci sono ancora buchi
+    print("Buchi rimasti (dovrebbero essere tutti 0):")
+    print(df.isnull().sum())
+
+    print(f"\nTotale righe eliminate: {righe_iniziali - len(df)}")
+
+    # Reset dell'indice (per avere i numeri di riga ordinati 0,1,2... dopo i tagli)
+    df = df.reset_index(drop=True)
+
+else:
+    print("Il DataFrame 'df' non è stato creato. Verifica il caricamento del file.")
