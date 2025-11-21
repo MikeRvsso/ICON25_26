@@ -1,123 +1,103 @@
 import pandas as pd
-import shutil # Libreria standard per copiare i file (serve per il backup)
+import shutil
 import os
+from sklearn.preprocessing import LabelEncoder 
 
 # ==========================================
-# 0. CONFIGURAZIONE PERCORSO
+# 0. CONFIGURAZIONE
 # ==========================================
-# Definiamo il percorso qui, così lo usiamo ovunque
 file_path = '../Dataset/amazon_delivery.csv'
 
 # ==========================================
-# 1. CARICAMENTO DEL DATASET
+# 1. CARICAMENTO
 # ==========================================
 try:
     df = pd.read_csv(file_path) 
-    print("✅ File CSV caricato con successo!")
-    
+    print("✅ File caricato!")
 except FileNotFoundError:
-    print(f"❌ Errore: File non trovato al percorso: {file_path}")
-    # df = pd.DataFrame() 
+    print(f"❌ Errore: File non trovato in {file_path}")
+    exit()
 
-# ==========================================
-# 2. ANALISI E PULIZIA
-# ==========================================
-
-if 'df' in locals(): # Esegue solo se il file è stato caricato
-    
-    print("\n" + "="*40)
-    print("REPORT DI ANALISI DEL DATASET")
-    print("="*40 + "\n")
-
-    # --- A. SGUARDO GENERALE ---
-    print("--- 1. ANTEPRIMA DATI ---")
-    print(df.head()) 
-    
-    print("\n--- 2. DIMENSIONI ---")
-    rows, cols = df.shape
-    print(f"Righe: {rows}, Colonne: {cols}")
-
-    # --- B. TIPI DI DATI ---
-    print("\n--- 3. INFO E TIPI DI DATI ---")
-    df.info() 
-
-    # --- C. VALORI MANCANTI ---
-    print("\n--- 4. CONTEGGIO CELLE VUOTE (NaN) ---")
-    missing = df.isnull().sum()
-    print(missing[missing > 0]) 
-
-    # --- D. DUPLICATI ---
-    print("\n--- 5. RIGHE DUPLICATE ---")
-    duplicati = df.duplicated().sum()
-    print(f"Righe identiche trovate: {duplicati}")
-
-    # --- E. STATISTICHE RAPIDE ---
-    print("\n--- 6. STATISTICHE ---")
-    print(df.describe())
-
-    # Controllo specifico Weather
-    print("--- Valori unici in Weather ---")
-    print(df['Weather'].unique())
-
+if 'df' in locals():
     # ==========================================
-    # FASE DI CLEANING (PULIZIA)
+    # 2. PULIZIA (CLEANING)
     # ==========================================
-    print("\n" + "="*40)
-    print("INIZIO PULIZIA DEL DATASET")
-    print("="*40 + "\n")
+    # Anche se il file è già pulito, lasciamo queste righe.
+    # Se il file è pulito, queste funzioni non faranno nulla (ed è ok!)
+    
+    print("\n--- FASE DI CLEANING ---")
+    righe_start = len(df)
 
-    righe_iniziali = len(df)
-
-    # 1. GESTIONE METEO (WEATHER)
+    df = df.drop_duplicates()
     df = df.dropna(subset=['Weather'])
-    print(f"✅ Eliminate righe con Meteo mancante. (Righe attuali: {len(df)})")
-
-    # 2. GESTIONE ETA' (AGENT_AGE)
     df = df[df['Agent_Age'] >= 18]
-    print(f"✅ Eliminati fattorini minorenni (<18). (Righe attuali: {len(df)})")
-
-    # 3. GESTIONE RATING (AGENT_RATING)
+    
+    # Rating: ricalcoliamo la mediana e riempiamo (sicuro anche se non ci sono buchi)
     rating_mediano = df['Agent_Rating'].median()
     df['Agent_Rating'] = df['Agent_Rating'].fillna(rating_mediano)
-    print(f"✅ Riempiti i Rating mancanti con la mediana ({rating_mediano}).")
-
-    # ==========================================
-    # VERIFICA FINALE
-    # ==========================================
-    print("\n" + "="*40)
-    print("VERIFICA POST-PULIZIA")
-    print("="*40 + "\n")
-
-    print("Buchi rimasti (dovrebbero essere tutti 0):")
-    print(df.isnull().sum())
-
-    print(f"\nTotale righe eliminate: {righe_iniziali - len(df)}")
-
-    # Reset dell'indice
-    df = df.reset_index(drop=True)
-
-    # ==========================================
-    # 3. SALVATAGGIO (SOVRASCRITTURA SICURA)
-    # ==========================================
-    print("\n" + "="*40)
-    print("SALVATAGGIO FILE")
-    print("="*40 + "\n")
-
-    # A. CREAZIONE BACKUP (Non si sa mai!)
-    # Creiamo un nome per il backup es: amazon_delivery_OLD.csv
-    backup_path = file_path.replace('.csv', '_OLD.csv')
     
-    try:
-        shutil.copy(file_path, backup_path)
-        print(f"📦 Backup di sicurezza creato: {backup_path}")
-        
-        # B. SOVRASCRITTURA DEL FILE ORIGINALE
-        # index=False serve a non aggiungere la colonna dei numeri di riga
-        df.to_csv(file_path, index=False)
-        print(f"💾 File originale '{file_path}' sovrascritto con i dati puliti!")
-        
-    except Exception as e:
-        print(f"❌ Errore durante il salvataggio: {e}")
+    print(f"✅ Pulizia completata (o verificata). Righe attuali: {len(df)}")
 
-else:
-    print("Il DataFrame 'df' non è stato creato. Verifica il caricamento del file.")
+    # ==========================================
+    # 3. ENCODING (CORRETTO E ROBUSTO)
+    # ==========================================
+    print("\n--- FASE DI ENCODING ---")
+
+    # 1. PULIZIA PRELIMINARE STRINGHE (Il trucco magico!)
+    # .str.strip() rimuove spazi vuoti invisibili all'inizio e alla fine
+    # Esempio: " High " diventa "High"
+    if df['Traffic'].dtype == 'object':
+        df['Traffic'] = df['Traffic'].str.strip()
+        # Stampiamo i valori unici per essere sicuri di come sono scritti
+        print("Valori reali trovati in Traffic:", df['Traffic'].unique())
+
+    if df['Weather'].dtype == 'object':
+        df['Weather'] = df['Weather'].str.strip()
+
+    # 2. ENCODING MANUALE
+    # Ora ridefiniamo la mappa (assicurati che i nomi stampati sopra combacino!)
+    traffic_map = {'Low': 0, 'Medium': 1, 'High': 2, 'Jam': 3}
+    
+    # Applichiamo la mappa solo se la colonna è ancora testo
+    if df['Traffic'].dtype == 'object': 
+        df['Traffic_Code'] = df['Traffic'].map(traffic_map)
+        print("✅ Traffico convertito.")
+    
+    # Meteo
+    weather_map = {'Sunny': 0, 'Cloudy': 1, 'Windy': 2, 'Fog': 3, 'Stormy': 4, 'Sandstorms': 5}
+    if df['Weather'].dtype == 'object':
+        df['Weather_Code'] = df['Weather'].map(weather_map)
+        print("✅ Meteo convertito.")
+
+    # 3. ENCODING AUTOMATICO (Vehicle & Category)
+    le = LabelEncoder()
+    
+    if df['Vehicle'].dtype == 'object':
+        df['Vehicle_Code'] = le.fit_transform(df['Vehicle'])
+        print("✅ Veicolo convertito.")
+        
+    if df['Category'].dtype == 'object':
+        df['Category_Code'] = le.fit_transform(df['Category'])
+        print("✅ Categoria convertita.")
+        
+    # ==========================================
+    # 4. SALVATAGGIO
+    # ==========================================
+    print("\n--- SALVATAGGIO ---")
+    
+    # Backup di sicurezza (sovrascrive il vecchio backup se c'è)
+    backup_path = file_path.replace('.csv', '_OLD.csv')
+    shutil.copy(file_path, backup_path)
+    print(f"📦 Backup aggiornato: {backup_path}")
+
+    # Sovrascrivi il file originale con le nuove colonne _Code
+    df.to_csv(file_path, index=False)
+    print(f"💾 File '{file_path}' aggiornato con successo!")
+    
+    # Verifica finale
+    print("\nAnteprima nuove colonne:")
+    cols_to_check = [c for c in df.columns if 'Code' in c]
+    if cols_to_check:
+        print(df[cols_to_check].head(3))
+    else:
+        print("⚠️ Nessuna colonna '_Code' trovata. Qualcosa non va.")
