@@ -1,0 +1,293 @@
+============================================================
+INFORMAZIONI GENERALI SUL DATASET
+============================================================
+
+Dimensioni del dataset: 43648 righe x 16 colonne
+
+Colonne presenti:
+   1. Order_ID
+   2. Agent_Age
+   3. Agent_Rating
+   4. Store_Latitude
+   5. Store_Longitude
+   6. Drop_Latitude
+   7. Drop_Longitude
+   8. Order_Date
+   9. Order_Time
+   10. Pickup_Time
+   11. Weather
+   12. Traffic
+   13. Vehicle
+   14. Area
+   15. Delivery_Time
+   16. Category
+
+============================================================
+TIPI DI DATI
+============================================================
+Order_ID            object
+Agent_Age            int64
+Agent_Rating       float64
+Store_Latitude     float64
+Store_Longitude    float64
+Drop_Latitude      float64
+Drop_Longitude     float64
+Order_Date          object
+Order_Time          object
+Pickup_Time         object
+Weather             object
+Traffic             object
+Vehicle             object
+Area                object
+Delivery_Time        int64
+Category            object
+dtype: object
+
+============================================================
+VALORI NULL PER OGNI FEATURE
+============================================================
+                 Null Count  Null %
+Order_ID                  0     0.0
+Agent_Age                 0     0.0
+Agent_Rating              0     0.0
+Store_Latitude            0     0.0
+Store_Longitude           0     0.0
+Drop_Latitude             0     0.0
+Drop_Longitude            0     0.0
+Order_Date                0     0.0
+Order_Time                0     0.0
+Pickup_Time               0     0.0
+Weather                   0     0.0
+Traffic                   0     0.0
+Vehicle                   0     0.0
+Area                      0     0.0
+Delivery_Time             0     0.0
+Category                  0     0.0
+
+Totale valori null nel dataset: 0
+
+============================================================
+DISTRIBUZIONE % PER FEATURE CATEGORICHE
+============================================================
+
+AREA:
+   Metropolitian: 74.77%
+   Urban: 22.28%
+   Other: 2.60%
+   Semi-Urban: 0.35%
+
+TRAFFIC:
+   Low: 34.36%
+   Jam: 31.44%
+   Medium: 24.35%
+   High: 9.84%
+
+WEATHER:
+   Fog: 17.05%
+   Stormy: 16.89%
+   Cloudy: 16.70%
+   Sandstorms: 16.60%
+   Windy: 16.55%
+   Sunny: 16.22%
+
+VEHICLE:
+   motorcycle: 58.47%
+   scooter: 33.47%
+   van: 8.07%
+
+CATEGORY:
+   Electronics: 6.51%
+   Books: 6.45%
+   Jewelry: 6.41%
+   Toys: 6.35%
+   Snacks: 6.34%
+   Skincare: 6.34%
+   Outdoors: 6.28%
+   Apparel: 6.24%
+   Sports: 6.21%
+   Grocery: 6.16%
+   Pet Supplies: 6.15%
+   Home: 6.14%
+   Cosmetics: 6.12%
+   Kitchen: 6.11%
+   Clothing: 6.10%
+   Shoes: 6.10%
+
+============================================================
+DISTRIBUZIONE AGENT_AGE
+============================================================
+   18-25: 29.68%
+   26-30: 24.98%
+   31-35: 25.06%
+   36-40: 20.28%
+
+============================================================
+STATISTICHE DESCRITTIVE - VARIABILI NUMERICHE
+============================================================
+       Agent_Age  Agent_Rating  Store_Latitude  Store_Longitude  \
+count   43648.00      43648.00        43648.00         43648.00   
+mean       29.56          4.64           17.24            70.76   
+std         5.76          0.31            7.70            21.15   
+min        20.00          2.50          -30.90             0.00   
+25%        25.00          4.50           12.93            73.17   
+50%        30.00          4.70           18.55            75.90   
+75%        35.00          4.90           22.73            78.05   
+max        39.00          5.00           30.91            88.43   
+
+       Drop_Latitude  Drop_Longitude  Delivery_Time  
+count       43648.00        43648.00       43648.00  
+mean           17.46           70.82         124.91  
+std             7.34           21.15          51.93  
+min             0.01            0.01          10.00  
+25%            12.99           73.28          90.00  
+50%            18.63           76.00         125.00  
+75%            22.79           78.10         160.00  
+max            31.05           88.56         270.00  
+
+============================================================
+ANALISI DELLA VARIABILE TARGET (Delivery_Time)
+============================================================
+   Media: 124.91 minuti
+   Mediana: 125.00 minuti
+   Std Dev: 51.93
+   Min: 10 minuti
+   Max: 270 minuti
+
+   Outliers (IQR method): 79 (0.18%)
+   Lower bound: -15.00
+   Upper bound: 265.00
+
+============================================================
+ANALISI AGENT_RATING
+============================================================
+   Media: 4.64
+   Mediana: 4.70
+   Min: 2.5
+   Max: 5.0
+   Agent con rating < 3.5: 223 (0.51%)
+
+============================================================
+ANALISI COORDINATE GEOGRAFICHE
+============================================================
+   Record con coordinate (0,0): 3495 (8.01%)
+   Record con latitudine negativa: 156 (0.36%)
+
+   Order_ID con coordinate (0,0):
+      - zotl583816092
+      - dcdm719150402
+      - bbow373480117
+      - etss702593505
+      - emlt327861941
+      - rufz727804632
+      - lgee738117860
+      - nxfs257449148
+      - bhdi726355812
+      - dfit633531471
+      - wqfy256790455
+      - xoka811702118
+      - iwoy649851528
+      - bwgn919229310
+      - pdxn136638766
+      - xzzw562394658
+      - lubd358643567
+      - bfvj522482572
+      - teij116088130
+      - hhem665543827
+
+   Record con latitudine negativa:
+            Order_ID  Store_Latitude  Store_Longitude
+90     hnme204254454      -27.163303        78.057044
+275    mctx146223837      -27.165108        78.015053
+1045   jxrf169692899      -15.546594        73.760431
+1705   csyn869746139      -23.230791        77.437020
+1893   bocx711605816      -22.539129        88.365507
+...              ...             ...              ...
+41983  lzux792298119      -15.498603        73.826911
+42164  lpkh473392828      -15.157944        73.950889
+42735  nnam562968751       -9.982834        76.283268
+43015  pvcj122440792      -19.874733        75.353942
+43253  ewwo088934804      -26.482581        80.315628
+
+[156 rows x 3 columns]
+
+============================================================
+ANALISI TEMPORALE
+============================================================
+   Periodo: dal 2022-02-11 al 2022-04-06
+
+   Distribuzione per mese:
+   Mese 2: 6970 ordini (15.97%)
+   Mese 3: 30588 ordini (70.08%)
+   Mese 4: 6090 ordini (13.95%)
+
+============================================================
+VALORI UNICI PER FEATURE
+============================================================
+   Order_ID: 43648 valori unici
+   Agent_Age: 20 valori unici
+   Agent_Rating: 26 valori unici
+   Store_Latitude: 491 valori unici
+   Store_Longitude: 389 valori unici
+   Drop_Latitude: 4366 valori unici
+   Drop_Longitude: 4366 valori unici
+   Order_Date: 44 valori unici
+   Order_Time: 176 valori unici
+   Pickup_Time: 193 valori unici
+   Weather: 6 valori unici
+   Traffic: 4 valori unici
+   Vehicle: 3 valori unici
+   Area: 4 valori unici
+   Delivery_Time: 89 valori unici
+   Category: 16 valori unici
+   Age_Group: 4 valori unici
+
+============================================================
+VERIFICA DUPLICATI
+============================================================
+   Righe duplicate: 0
+   Order_ID duplicati: 0
+
+============================================================
+CORRELAZIONI CON DELIVERY_TIME
+============================================================
+
+Correlazioni con Delivery_Time:
+   Agent_Age: 0.2586
+   Drop_Latitude: 0.0169
+   Store_Latitude: 0.0168
+   Drop_Longitude: 0.0118
+   Store_Longitude: 0.0113
+   Agent_Rating: -0.3076
+
+============================================================
+PROBLEMI IDENTIFICATI E RACCOMANDAZIONI PER PREPROCESSING
+============================================================
+
+1. COORDINATE (0,0): Ci sono record con coordinate nulle
+   -> Azione: Imputare o rimuovere questi record
+
+2. COORDINATE NEGATIVE: Alcune latitudini sono negative
+   -> Azione: Verificare e correggere (potrebbero essere errori di segno)
+
+3. SPAZI NELLE CATEGORIE: Traffic e Vehicle hanno spazi extra
+   -> Azione: Applicare .strip() a tutte le colonne stringa
+
+4. OUTLIERS DELIVERY_TIME: Alcuni valori potrebbero essere anomali
+   -> Azione: Valutare rimozione o capping
+
+5. RATING BASSI: Alcuni agent hanno rating molto bassi (<3.5)
+   -> Azione: Verificare se sono dati validi
+
+6. FEATURE ENGINEERING SUGGERITE:
+   - Calcolare distanza euclidea/haversine tra store e drop
+   - Estrarre ora del giorno da Order_Time
+   - Estrarre giorno della settimana da Order_Date
+   - Calcolare tempo di attesa (Pickup_Time - Order_Time)
+   - Creare fasce orarie (mattina, pomeriggio, sera, notte)
+
+7. ENCODING NECESSARIO:
+   - One-Hot Encoding: Weather, Traffic, Vehicle, Area, Category
+   - Label Encoding alternativo per ordinali (Traffic: Low<Medium<High<Jam)
+
+8. SCALING:
+   - Normalizzare/standardizzare features numeriche per ML
