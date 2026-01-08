@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7b56408e40c1f3f97b79620790817e63 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-ant-path@1.1.2/dist/leaflet-ant-path.min.js"></script>
+</head>
+<body>
+    
+    
+        <div style="position: fixed; 
+                    top: 10px; left: 50px; width: 400px;
+                    background-color: white; padding: 10px;
+                    border: 2px solid grey; border-radius: 5px;
+                    z-index: 9999; font-family: Arial;">
+            <h4>🚚 Percorso Furgone 0 - GBFS</h4>
+            <p>Distanza Totale: <b>1584.98 km</b></p>
+            <p>Consegne: <b>39</b></p>
+        </div>
+        
+    
+            <div class="folium-map" id="map_7b56408e40c1f3f97b79620790817e63" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7b56408e40c1f3f97b79620790817e63 = L.map(
+                "map_7b56408e40c1f3f97b79620790817e63",
+                {
+                    center: [23.615452704190115, 85.31381378236398],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a3d0dcf45b17c0f5a4d298124c672ca3 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a3d0dcf45b17c0f5a4d298124c672ca3.addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var marker_e791f1e979f477e02b523e1b85da3b84 = L.marker(
+                [23.558623435897434, 85.25698453846154],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var icon_3d850a8ab82c700e4ce8ea32623fc2fa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_14eb10d67c2f1443b92966cf44d3ea5b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_094c3d71cafa2a78ad2b886d66d9d628 = $(`<div id="html_094c3d71cafa2a78ad2b886d66d9d628" style="width: 100.0%; height: 100.0%;">🏭 DEPOSITO (Start/End)</div>`)[0];
+                popup_14eb10d67c2f1443b92966cf44d3ea5b.setContent(html_094c3d71cafa2a78ad2b886d66d9d628);
+            
+        
+
+        marker_e791f1e979f477e02b523e1b85da3b84.bindPopup(popup_14eb10d67c2f1443b92966cf44d3ea5b)
+        ;
+
+        
+    
+    
+            marker_e791f1e979f477e02b523e1b85da3b84.bindTooltip(
+                `<div>
+                     Deposito
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e791f1e979f477e02b523e1b85da3b84.setIcon(icon_3d850a8ab82c700e4ce8ea32623fc2fa);
+            
+    
+            var marker_209d8d0cb7cfe517b17d7fc8f95f77a5 = L.marker(
+                [23.446792, 85.346842],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_4cc2622a6eadc16d7da301ba2b7f9016 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e1\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_922e0c594ad1ae7565098ee16b8b2fa9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_13c3fb6c754f950b6db67c01ab37c91e = $(`<div id="html_13c3fb6c754f950b6db67c01ab37c91e" style="width: 100.0%; height: 100.0%;">📦 Consegna #1<br>Package: 3591</div>`)[0];
+                popup_922e0c594ad1ae7565098ee16b8b2fa9.setContent(html_13c3fb6c754f950b6db67c01ab37c91e);
+            
+        
+
+        marker_209d8d0cb7cfe517b17d7fc8f95f77a5.bindPopup(popup_922e0c594ad1ae7565098ee16b8b2fa9)
+        ;
+
+        
+    
+    
+            marker_209d8d0cb7cfe517b17d7fc8f95f77a5.bindTooltip(
+                `<div>
+                     Consegna #1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_209d8d0cb7cfe517b17d7fc8f95f77a5.setIcon(div_icon_4cc2622a6eadc16d7da301ba2b7f9016);
+            
+    
+            var marker_315cf8c55d0302531fdb97b9c9714922 = L.marker(
+                [23.446792, 85.346842],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_7f027f572411e1b867b48acd24915375 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e2\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_f59226f7ed55c2fd78017cfc6dd3e3ec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_35a992d1a7cfa791e86bdc04789db421 = $(`<div id="html_35a992d1a7cfa791e86bdc04789db421" style="width: 100.0%; height: 100.0%;">📦 Consegna #2<br>Package: 3604</div>`)[0];
+                popup_f59226f7ed55c2fd78017cfc6dd3e3ec.setContent(html_35a992d1a7cfa791e86bdc04789db421);
+            
+        
+
+        marker_315cf8c55d0302531fdb97b9c9714922.bindPopup(popup_f59226f7ed55c2fd78017cfc6dd3e3ec)
+        ;
+
+        
+    
+    
+            marker_315cf8c55d0302531fdb97b9c9714922.bindTooltip(
+                `<div>
+                     Consegna #2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_315cf8c55d0302531fdb97b9c9714922.setIcon(div_icon_7f027f572411e1b867b48acd24915375);
+            
+    
+            var marker_0df4d41f63bc475ca27ec191a0ac097a = L.marker(
+                [23.424878, 85.385739],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_9752df962362fbda537485a90869bacf = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e3\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_5224593806c5865e7393a51ea34e9be0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5255d3b1a862014e917c8d9f0fc2cc0d = $(`<div id="html_5255d3b1a862014e917c8d9f0fc2cc0d" style="width: 100.0%; height: 100.0%;">📦 Consegna #3<br>Package: 3588</div>`)[0];
+                popup_5224593806c5865e7393a51ea34e9be0.setContent(html_5255d3b1a862014e917c8d9f0fc2cc0d);
+            
+        
+
+        marker_0df4d41f63bc475ca27ec191a0ac097a.bindPopup(popup_5224593806c5865e7393a51ea34e9be0)
+        ;
+
+        
+    
+    
+            marker_0df4d41f63bc475ca27ec191a0ac097a.bindTooltip(
+                `<div>
+                     Consegna #3
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0df4d41f63bc475ca27ec191a0ac097a.setIcon(div_icon_9752df962362fbda537485a90869bacf);
+            
+    
+            var marker_ffce1ce221a8b51e6df458c6ff18560d = L.marker(
+                [23.424878, 85.385739],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_3eec592591fb43e1282040ca4dd1f9cb = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e4\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_e69a9ab9390bd381adab9ffd19a19684 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_efbd50b97018559f032e6306081a099c = $(`<div id="html_efbd50b97018559f032e6306081a099c" style="width: 100.0%; height: 100.0%;">📦 Consegna #4<br>Package: 3611</div>`)[0];
+                popup_e69a9ab9390bd381adab9ffd19a19684.setContent(html_efbd50b97018559f032e6306081a099c);
+            
+        
+
+        marker_ffce1ce221a8b51e6df458c6ff18560d.bindPopup(popup_e69a9ab9390bd381adab9ffd19a19684)
+        ;
+
+        
+    
+    
+            marker_ffce1ce221a8b51e6df458c6ff18560d.bindTooltip(
+                `<div>
+                     Consegna #4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ffce1ce221a8b51e6df458c6ff18560d.setIcon(div_icon_3eec592591fb43e1282040ca4dd1f9cb);
+            
+    
+            var marker_34900a5ac91ab92988adafe35ae9ffb7 = L.marker(
+                [23.419033, 85.385347],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_238e735acaaf580e745c4f49e20cb6f5 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e5\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_824d18ccb07955c8c7bdeb34c89ff19a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_85a83f8c74f5ad7cc7308e9421199a9e = $(`<div id="html_85a83f8c74f5ad7cc7308e9421199a9e" style="width: 100.0%; height: 100.0%;">📦 Consegna #5<br>Package: 3595</div>`)[0];
+                popup_824d18ccb07955c8c7bdeb34c89ff19a.setContent(html_85a83f8c74f5ad7cc7308e9421199a9e);
+            
+        
+
+        marker_34900a5ac91ab92988adafe35ae9ffb7.bindPopup(popup_824d18ccb07955c8c7bdeb34c89ff19a)
+        ;
+
+        
+    
+    
+            marker_34900a5ac91ab92988adafe35ae9ffb7.bindTooltip(
+                `<div>
+                     Consegna #5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_34900a5ac91ab92988adafe35ae9ffb7.setIcon(div_icon_238e735acaaf580e745c4f49e20cb6f5);
+            
+    
+            var marker_4af704455e2341fafb1bf3120996f5e3 = L.marker(
+                [23.417804, 85.385146],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_e894ba0e60fed72f1fcb8473bfc27d56 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e6\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_3517f53df155de3123750ce1ce3118bd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d00259699ff78f2983d84ea472eb80d6 = $(`<div id="html_d00259699ff78f2983d84ea472eb80d6" style="width: 100.0%; height: 100.0%;">📦 Consegna #6<br>Package: 3598</div>`)[0];
+                popup_3517f53df155de3123750ce1ce3118bd.setContent(html_d00259699ff78f2983d84ea472eb80d6);
+            
+        
+
+        marker_4af704455e2341fafb1bf3120996f5e3.bindPopup(popup_3517f53df155de3123750ce1ce3118bd)
+        ;
+
+        
+    
+    
+            marker_4af704455e2341fafb1bf3120996f5e3.bindTooltip(
+                `<div>
+                     Consegna #6
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4af704455e2341fafb1bf3120996f5e3.setIcon(div_icon_e894ba0e60fed72f1fcb8473bfc27d56);
+            
+    
+            var marker_eeeed485dbf58d0099cbc775b5db34ae = L.marker(
+                [23.417804, 85.385146],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_f87adc558c1ffbabff12c4c47dfc3c85 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e7\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_515e35327b7a690f4a34ec92c2a1ff0c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_81c78a36349bc28e578772f98e54650b = $(`<div id="html_81c78a36349bc28e578772f98e54650b" style="width: 100.0%; height: 100.0%;">📦 Consegna #7<br>Package: 3599</div>`)[0];
+                popup_515e35327b7a690f4a34ec92c2a1ff0c.setContent(html_81c78a36349bc28e578772f98e54650b);
+            
+        
+
+        marker_eeeed485dbf58d0099cbc775b5db34ae.bindPopup(popup_515e35327b7a690f4a34ec92c2a1ff0c)
+        ;
+
+        
+    
+    
+            marker_eeeed485dbf58d0099cbc775b5db34ae.bindTooltip(
+                `<div>
+                     Consegna #7
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eeeed485dbf58d0099cbc775b5db34ae.setIcon(div_icon_f87adc558c1ffbabff12c4c47dfc3c85);
+            
+    
+            var marker_e01560eb078490cf3622ffb7b03f64ee = L.marker(
+                [23.429194, 85.395447],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_8ca7d2e04364916971ef62ff4cbbd332 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e8\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_6994eb223a6d6b905b7315647717eef1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4f6b7742ec74e728c6ff991c0e33237b = $(`<div id="html_4f6b7742ec74e728c6ff991c0e33237b" style="width: 100.0%; height: 100.0%;">📦 Consegna #8<br>Package: 3597</div>`)[0];
+                popup_6994eb223a6d6b905b7315647717eef1.setContent(html_4f6b7742ec74e728c6ff991c0e33237b);
+            
+        
+
+        marker_e01560eb078490cf3622ffb7b03f64ee.bindPopup(popup_6994eb223a6d6b905b7315647717eef1)
+        ;
+
+        
+    
+    
+            marker_e01560eb078490cf3622ffb7b03f64ee.bindTooltip(
+                `<div>
+                     Consegna #8
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e01560eb078490cf3622ffb7b03f64ee.setIcon(div_icon_8ca7d2e04364916971ef62ff4cbbd332);
+            
+    
+            var marker_2af4f89a8ff063db2871d6d6026ee628 = L.marker(
+                [23.439407, 85.405055],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_47b89c7b7678546763b034d6393bca92 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e9\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_ccb7f78af57edd4176177b7689d1153f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_32eafe42ece07b078bf8a31f4f692d80 = $(`<div id="html_32eafe42ece07b078bf8a31f4f692d80" style="width: 100.0%; height: 100.0%;">📦 Consegna #9<br>Package: 3609</div>`)[0];
+                popup_ccb7f78af57edd4176177b7689d1153f.setContent(html_32eafe42ece07b078bf8a31f4f692d80);
+            
+        
+
+        marker_2af4f89a8ff063db2871d6d6026ee628.bindPopup(popup_ccb7f78af57edd4176177b7689d1153f)
+        ;
+
+        
+    
+    
+            marker_2af4f89a8ff063db2871d6d6026ee628.bindTooltip(
+                `<div>
+                     Consegna #9
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2af4f89a8ff063db2871d6d6026ee628.setIcon(div_icon_47b89c7b7678546763b034d6393bca92);
+            
+    
+            var marker_9d8b019cb83e6ad769855495d692737a = L.marker(
+                [23.445164, 85.414097],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_34d8555ff115235f4f23228f01049d9c = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e10\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_5c6084d87625c8b555a5f2db8e35b74d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fafd0f809efcde17dcd9823e8225672b = $(`<div id="html_fafd0f809efcde17dcd9823e8225672b" style="width: 100.0%; height: 100.0%;">📦 Consegna #10<br>Package: 3594</div>`)[0];
+                popup_5c6084d87625c8b555a5f2db8e35b74d.setContent(html_fafd0f809efcde17dcd9823e8225672b);
+            
+        
+
+        marker_9d8b019cb83e6ad769855495d692737a.bindPopup(popup_5c6084d87625c8b555a5f2db8e35b74d)
+        ;
+
+        
+    
+    
+            marker_9d8b019cb83e6ad769855495d692737a.bindTooltip(
+                `<div>
+                     Consegna #10
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9d8b019cb83e6ad769855495d692737a.setIcon(div_icon_34d8555ff115235f4f23228f01049d9c);
+            
+    
+            var marker_94d66cb4020c88d554565ab83a2e9093 = L.marker(
+                [23.467804, 85.435146],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_e54bc9b3ad7ba9a9f31350a42046d642 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e11\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_e1b729ab2952cf7c32277432e115bbf5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_95a80cdee2a6934dd8edd6116954ff32 = $(`<div id="html_95a80cdee2a6934dd8edd6116954ff32" style="width: 100.0%; height: 100.0%;">📦 Consegna #11<br>Package: 3592</div>`)[0];
+                popup_e1b729ab2952cf7c32277432e115bbf5.setContent(html_95a80cdee2a6934dd8edd6116954ff32);
+            
+        
+
+        marker_94d66cb4020c88d554565ab83a2e9093.bindPopup(popup_e1b729ab2952cf7c32277432e115bbf5)
+        ;
+
+        
+    
+    
+            marker_94d66cb4020c88d554565ab83a2e9093.bindTooltip(
+                `<div>
+                     Consegna #11
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_94d66cb4020c88d554565ab83a2e9093.setIcon(div_icon_e54bc9b3ad7ba9a9f31350a42046d642);
+            
+    
+            var marker_585c1053deb665caf0cfae5227ce98c9 = L.marker(
+                [23.463017, 85.4472],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_0de1ea3699694cbfb89e6968fdad5010 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e12\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_c775c5fce5bce7515c4d3c321b2531f6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_400e52c5f1db9179a8b21de148679063 = $(`<div id="html_400e52c5f1db9179a8b21de148679063" style="width: 100.0%; height: 100.0%;">📦 Consegna #12<br>Package: 3593</div>`)[0];
+                popup_c775c5fce5bce7515c4d3c321b2531f6.setContent(html_400e52c5f1db9179a8b21de148679063);
+            
+        
+
+        marker_585c1053deb665caf0cfae5227ce98c9.bindPopup(popup_c775c5fce5bce7515c4d3c321b2531f6)
+        ;
+
+        
+    
+    
+            marker_585c1053deb665caf0cfae5227ce98c9.bindTooltip(
+                `<div>
+                     Consegna #12
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_585c1053deb665caf0cfae5227ce98c9.setIcon(div_icon_0de1ea3699694cbfb89e6968fdad5010);
+            
+    
+            var marker_af73124ce11cbcc61c323ff1eeb106b5 = L.marker(
+                [23.485164, 85.454097],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_de58ff09735ef2fe4f5a59789eb15013 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e13\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_7babc785ba2b5f4a58f8975db7c8af6b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_eaf8917f857888f9bcf4351e2912496e = $(`<div id="html_eaf8917f857888f9bcf4351e2912496e" style="width: 100.0%; height: 100.0%;">📦 Consegna #13<br>Package: 3615</div>`)[0];
+                popup_7babc785ba2b5f4a58f8975db7c8af6b.setContent(html_eaf8917f857888f9bcf4351e2912496e);
+            
+        
+
+        marker_af73124ce11cbcc61c323ff1eeb106b5.bindPopup(popup_7babc785ba2b5f4a58f8975db7c8af6b)
+        ;
+
+        
+    
+    
+            marker_af73124ce11cbcc61c323ff1eeb106b5.bindTooltip(
+                `<div>
+                     Consegna #13
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_af73124ce11cbcc61c323ff1eeb106b5.setIcon(div_icon_de58ff09735ef2fe4f5a59789eb15013);
+            
+    
+            var marker_4cbf408f13a70f7a1ae8c31440786699 = L.marker(
+                [23.489407, 85.455055],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_39b7bcc9f5edccb0aa027a6b6c1c2001 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e14\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_138aa8e80b0e66fcd056b7ced9e15bec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bfc7694fdf9d06a0604fd261b46985b5 = $(`<div id="html_bfc7694fdf9d06a0604fd261b46985b5" style="width: 100.0%; height: 100.0%;">📦 Consegna #14<br>Package: 3616</div>`)[0];
+                popup_138aa8e80b0e66fcd056b7ced9e15bec.setContent(html_bfc7694fdf9d06a0604fd261b46985b5);
+            
+        
+
+        marker_4cbf408f13a70f7a1ae8c31440786699.bindPopup(popup_138aa8e80b0e66fcd056b7ced9e15bec)
+        ;
+
+        
+    
+    
+            marker_4cbf408f13a70f7a1ae8c31440786699.bindTooltip(
+                `<div>
+                     Consegna #14
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4cbf408f13a70f7a1ae8c31440786699.setIcon(div_icon_39b7bcc9f5edccb0aa027a6b6c1c2001);
+            
+    
+            var marker_6cec83111151e35cdbbbfbba607d5fa5 = L.marker(
+                [23.546792, 85.446842],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_c8e452f5d6f944dfb3b6138c2b182945 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e15\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_0b2e1fce22059245b99226a11f956204 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_93ec950aeb2f2d19873e5800e3421e7a = $(`<div id="html_93ec950aeb2f2d19873e5800e3421e7a" style="width: 100.0%; height: 100.0%;">📦 Consegna #15<br>Package: 3622</div>`)[0];
+                popup_0b2e1fce22059245b99226a11f956204.setContent(html_93ec950aeb2f2d19873e5800e3421e7a);
+            
+        
+
+        marker_6cec83111151e35cdbbbfbba607d5fa5.bindPopup(popup_0b2e1fce22059245b99226a11f956204)
+        ;
+
+        
+    
+    
+            marker_6cec83111151e35cdbbbfbba607d5fa5.bindTooltip(
+                `<div>
+                     Consegna #15
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6cec83111151e35cdbbbfbba607d5fa5.setIcon(div_icon_c8e452f5d6f944dfb3b6138c2b182945);
+            
+    
+            var marker_cc7e29c99b33bd77b73d27f4cfb4fc4d = L.marker(
+                [23.52925, 85.520464],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_d8c27712df72c1dbf7846ad9b31d83b8 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e16\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_660cc047fd5adc0635861ce9e138df28 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d2be51ba3866a87e2ce44075c35614b6 = $(`<div id="html_d2be51ba3866a87e2ce44075c35614b6" style="width: 100.0%; height: 100.0%;">📦 Consegna #16<br>Package: 3589</div>`)[0];
+                popup_660cc047fd5adc0635861ce9e138df28.setContent(html_d2be51ba3866a87e2ce44075c35614b6);
+            
+        
+
+        marker_cc7e29c99b33bd77b73d27f4cfb4fc4d.bindPopup(popup_660cc047fd5adc0635861ce9e138df28)
+        ;
+
+        
+    
+    
+            marker_cc7e29c99b33bd77b73d27f4cfb4fc4d.bindTooltip(
+                `<div>
+                     Consegna #16
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cc7e29c99b33bd77b73d27f4cfb4fc4d.setIcon(div_icon_d8c27712df72c1dbf7846ad9b31d83b8);
+            
+    
+            var marker_220ea222861813e797b90dbb5205ede1 = L.marker(
+                [23.403017, 85.3872],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_6ecdecb02103636b0f8688ef835eda4d = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e17\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_65602909774c6eae38f8ca8e600b898e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a04c985949c2b180fcffab6c599c98de = $(`<div id="html_a04c985949c2b180fcffab6c599c98de" style="width: 100.0%; height: 100.0%;">📦 Consegna #17<br>Package: 3620</div>`)[0];
+                popup_65602909774c6eae38f8ca8e600b898e.setContent(html_a04c985949c2b180fcffab6c599c98de);
+            
+        
+
+        marker_220ea222861813e797b90dbb5205ede1.bindPopup(popup_65602909774c6eae38f8ca8e600b898e)
+        ;
+
+        
+    
+    
+            marker_220ea222861813e797b90dbb5205ede1.bindTooltip(
+                `<div>
+                     Consegna #17
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_220ea222861813e797b90dbb5205ede1.setIcon(div_icon_6ecdecb02103636b0f8688ef835eda4d);
+            
+    
+            var marker_28e22fd1195f35a4d4ffd1985cbde1a3 = L.marker(
+                [23.399033, 85.365347],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_ff7d8076e14d10dc6045cfcea7276e74 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e18\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_1784da691f6572fc641677aa5f33bb52 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0c4cfc8f904d4e60aa649341dd85f8ed = $(`<div id="html_0c4cfc8f904d4e60aa649341dd85f8ed" style="width: 100.0%; height: 100.0%;">📦 Consegna #18<br>Package: 3601</div>`)[0];
+                popup_1784da691f6572fc641677aa5f33bb52.setContent(html_0c4cfc8f904d4e60aa649341dd85f8ed);
+            
+        
+
+        marker_28e22fd1195f35a4d4ffd1985cbde1a3.bindPopup(popup_1784da691f6572fc641677aa5f33bb52)
+        ;
+
+        
+    
+    
+            marker_28e22fd1195f35a4d4ffd1985cbde1a3.bindTooltip(
+                `<div>
+                     Consegna #18
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_28e22fd1195f35a4d4ffd1985cbde1a3.setIcon(div_icon_ff7d8076e14d10dc6045cfcea7276e74);
+            
+    
+            var marker_61e4e7843ee98144561023a4be65027b = L.marker(
+                [23.389746, 85.35982],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_4c2403c1d292a4452d2fb303bee3de3d = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e19\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_e0cc0a30a4fad6548105dfad3a9c507e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1d4ef9d3d29d355d45114f462a8e1a42 = $(`<div id="html_1d4ef9d3d29d355d45114f462a8e1a42" style="width: 100.0%; height: 100.0%;">📦 Consegna #19<br>Package: 3602</div>`)[0];
+                popup_e0cc0a30a4fad6548105dfad3a9c507e.setContent(html_1d4ef9d3d29d355d45114f462a8e1a42);
+            
+        
+
+        marker_61e4e7843ee98144561023a4be65027b.bindPopup(popup_e0cc0a30a4fad6548105dfad3a9c507e)
+        ;
+
+        
+    
+    
+            marker_61e4e7843ee98144561023a4be65027b.bindTooltip(
+                `<div>
+                     Consegna #19
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_61e4e7843ee98144561023a4be65027b.setIcon(div_icon_4c2403c1d292a4452d2fb303bee3de3d);
+            
+    
+            var marker_b30706f8a24f446413327cb2300a2e6f = L.marker(
+                [23.384878, 85.345739],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_aa5b26ee8a4e91b75a87fb0aa3630a7e = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e20\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_7868bc867ccfb5747dc9af3f293a7d54 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d2f31ed17adfa7aba73e282d420e367d = $(`<div id="html_d2f31ed17adfa7aba73e282d420e367d" style="width: 100.0%; height: 100.0%;">📦 Consegna #20<br>Package: 3619</div>`)[0];
+                popup_7868bc867ccfb5747dc9af3f293a7d54.setContent(html_d2f31ed17adfa7aba73e282d420e367d);
+            
+        
+
+        marker_b30706f8a24f446413327cb2300a2e6f.bindPopup(popup_7868bc867ccfb5747dc9af3f293a7d54)
+        ;
+
+        
+    
+    
+            marker_b30706f8a24f446413327cb2300a2e6f.bindTooltip(
+                `<div>
+                     Consegna #20
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b30706f8a24f446413327cb2300a2e6f.setIcon(div_icon_aa5b26ee8a4e91b75a87fb0aa3630a7e);
+            
+    
+            var marker_9b68c6d01b5f6859ee323d08da8f2d4c = L.marker(
+                [23.379194, 85.345447],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_635626f94ab81c79b3670dc8f085731d = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e21\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_0a519f491128c47e2901041513b5207e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_37d876245542d18d857f938aa653e765 = $(`<div id="html_37d876245542d18d857f938aa653e765" style="width: 100.0%; height: 100.0%;">📦 Consegna #21<br>Package: 3612</div>`)[0];
+                popup_0a519f491128c47e2901041513b5207e.setContent(html_37d876245542d18d857f938aa653e765);
+            
+        
+
+        marker_9b68c6d01b5f6859ee323d08da8f2d4c.bindPopup(popup_0a519f491128c47e2901041513b5207e)
+        ;
+
+        
+    
+    
+            marker_9b68c6d01b5f6859ee323d08da8f2d4c.bindTooltip(
+                `<div>
+                     Consegna #21
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9b68c6d01b5f6859ee323d08da8f2d4c.setIcon(div_icon_635626f94ab81c79b3670dc8f085731d);
+            
+    
+            var marker_091a7b949bb94bc7c128e3f0a1a1632d = L.marker(
+                [23.379033, 85.345347],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_ab59f6b80fcae013fdd37e6dc91a05b2 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e22\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_91702929f3269088788a9117c6ac80a6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_41e1126ac7cd6f54c459c9ae12157c42 = $(`<div id="html_41e1126ac7cd6f54c459c9ae12157c42" style="width: 100.0%; height: 100.0%;">📦 Consegna #22<br>Package: 3610</div>`)[0];
+                popup_91702929f3269088788a9117c6ac80a6.setContent(html_41e1126ac7cd6f54c459c9ae12157c42);
+            
+        
+
+        marker_091a7b949bb94bc7c128e3f0a1a1632d.bindPopup(popup_91702929f3269088788a9117c6ac80a6)
+        ;
+
+        
+    
+    
+            marker_091a7b949bb94bc7c128e3f0a1a1632d.bindTooltip(
+                `<div>
+                     Consegna #22
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_091a7b949bb94bc7c128e3f0a1a1632d.setIcon(div_icon_ab59f6b80fcae013fdd37e6dc91a05b2);
+            
+    
+            var marker_604900951857514361dd867c348f9d0e = L.marker(
+                [23.375164, 85.344097],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_cddb82b08d79c41aa4779fe4956b1978 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e23\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_92abeeaea1037581a53d684cbfe6fbe7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2f2c5642e2f324c4a1f8a7720be3f933 = $(`<div id="html_2f2c5642e2f324c4a1f8a7720be3f933" style="width: 100.0%; height: 100.0%;">📦 Consegna #23<br>Package: 3590</div>`)[0];
+                popup_92abeeaea1037581a53d684cbfe6fbe7.setContent(html_2f2c5642e2f324c4a1f8a7720be3f933);
+            
+        
+
+        marker_604900951857514361dd867c348f9d0e.bindPopup(popup_92abeeaea1037581a53d684cbfe6fbe7)
+        ;
+
+        
+    
+    
+            marker_604900951857514361dd867c348f9d0e.bindTooltip(
+                `<div>
+                     Consegna #23
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_604900951857514361dd867c348f9d0e.setIcon(div_icon_cddb82b08d79c41aa4779fe4956b1978);
+            
+    
+            var marker_ee8eab94251d88d364510655d4642c4c = L.marker(
+                [23.374422, 85.3529],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_528053c608d1527c925d8d7d346b9d09 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e24\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_7fe00e7a4a5bad43af6349b47b8e16b9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aa429b7adbbddddd31176c73fcc78231 = $(`<div id="html_aa429b7adbbddddd31176c73fcc78231" style="width: 100.0%; height: 100.0%;">📦 Consegna #24<br>Package: 3586</div>`)[0];
+                popup_7fe00e7a4a5bad43af6349b47b8e16b9.setContent(html_aa429b7adbbddddd31176c73fcc78231);
+            
+        
+
+        marker_ee8eab94251d88d364510655d4642c4c.bindPopup(popup_7fe00e7a4a5bad43af6349b47b8e16b9)
+        ;
+
+        
+    
+    
+            marker_ee8eab94251d88d364510655d4642c4c.bindTooltip(
+                `<div>
+                     Consegna #24
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ee8eab94251d88d364510655d4642c4c.setIcon(div_icon_528053c608d1527c925d8d7d346b9d09);
+            
+    
+            var marker_a2ef5c3c4062bc8afcd1412a2cdb59ae = L.marker(
+                [23.374422, 85.3529],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_640a056ac3a3db317f933e34f5c4bcf4 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e25\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_20de9ba94b449bdb0d1647b58f35e9ee = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_798f7c0638b830f3d18f595ce0781242 = $(`<div id="html_798f7c0638b830f3d18f595ce0781242" style="width: 100.0%; height: 100.0%;">📦 Consegna #25<br>Package: 3608</div>`)[0];
+                popup_20de9ba94b449bdb0d1647b58f35e9ee.setContent(html_798f7c0638b830f3d18f595ce0781242);
+            
+        
+
+        marker_a2ef5c3c4062bc8afcd1412a2cdb59ae.bindPopup(popup_20de9ba94b449bdb0d1647b58f35e9ee)
+        ;
+
+        
+    
+    
+            marker_a2ef5c3c4062bc8afcd1412a2cdb59ae.bindTooltip(
+                `<div>
+                     Consegna #25
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a2ef5c3c4062bc8afcd1412a2cdb59ae.setIcon(div_icon_640a056ac3a3db317f933e34f5c4bcf4);
+            
+    
+            var marker_06a43bb30a8860edc90ab0b4797a3c07 = L.marker(
+                [23.369407, 85.335055],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_ad5f59e6dd9ab00506aa121b9adcc29e = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e26\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_14d8dfcf1a2386886d7643fd16fe7933 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_34b0399373dace3de90baff52b3471d9 = $(`<div id="html_34b0399373dace3de90baff52b3471d9" style="width: 100.0%; height: 100.0%;">📦 Consegna #26<br>Package: 3607</div>`)[0];
+                popup_14d8dfcf1a2386886d7643fd16fe7933.setContent(html_34b0399373dace3de90baff52b3471d9);
+            
+        
+
+        marker_06a43bb30a8860edc90ab0b4797a3c07.bindPopup(popup_14d8dfcf1a2386886d7643fd16fe7933)
+        ;
+
+        
+    
+    
+            marker_06a43bb30a8860edc90ab0b4797a3c07.bindTooltip(
+                `<div>
+                     Consegna #26
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_06a43bb30a8860edc90ab0b4797a3c07.setIcon(div_icon_ad5f59e6dd9ab00506aa121b9adcc29e);
+            
+    
+            var marker_6b085349cb58c2f0415e8902340b32b4 = L.marker(
+                [23.343017, 85.3272],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_af83014d17685b25f6cde015593b2d4d = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e27\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_b7a26b51a73e916839f667b788803a52 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a975a4f0fd33a0be5078ae2113c23089 = $(`<div id="html_a975a4f0fd33a0be5078ae2113c23089" style="width: 100.0%; height: 100.0%;">📦 Consegna #27<br>Package: 3618</div>`)[0];
+                popup_b7a26b51a73e916839f667b788803a52.setContent(html_a975a4f0fd33a0be5078ae2113c23089);
+            
+        
+
+        marker_6b085349cb58c2f0415e8902340b32b4.bindPopup(popup_b7a26b51a73e916839f667b788803a52)
+        ;
+
+        
+    
+    
+            marker_6b085349cb58c2f0415e8902340b32b4.bindTooltip(
+                `<div>
+                     Consegna #27
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6b085349cb58c2f0415e8902340b32b4.setIcon(div_icon_af83014d17685b25f6cde015593b2d4d);
+            
+    
+            var marker_07c0ece87d8d102bf5951c6b5a2a5f5d = L.marker(
+                [22.608999, 88.392336],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_c002f0f23bb9cd48c044c7b099dd92f0 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e28\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_ffbf2a7763ca5f1e7688f2ab59c3c485 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_83968cbec58fc34cbf2774b73ce2518c = $(`<div id="html_83968cbec58fc34cbf2774b73ce2518c" style="width: 100.0%; height: 100.0%;">📦 Consegna #28<br>Package: 3587</div>`)[0];
+                popup_ffbf2a7763ca5f1e7688f2ab59c3c485.setContent(html_83968cbec58fc34cbf2774b73ce2518c);
+            
+        
+
+        marker_07c0ece87d8d102bf5951c6b5a2a5f5d.bindPopup(popup_ffbf2a7763ca5f1e7688f2ab59c3c485)
+        ;
+
+        
+    
+    
+            marker_07c0ece87d8d102bf5951c6b5a2a5f5d.bindTooltip(
+                `<div>
+                     Consegna #28
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_07c0ece87d8d102bf5951c6b5a2a5f5d.setIcon(div_icon_c002f0f23bb9cd48c044c7b099dd92f0);
+            
+    
+            var marker_cbbbe236959ff47fbe920fb3bed31bc9 = L.marker(
+                [22.613227, 88.413273],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_b9609614ef2b1150f1056daae92c6d1c = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e29\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_00b176cc5cfa046eee408957a78a322a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1f1b27c005859eefc9a94203a79ea0f4 = $(`<div id="html_1f1b27c005859eefc9a94203a79ea0f4" style="width: 100.0%; height: 100.0%;">📦 Consegna #29<br>Package: 3605</div>`)[0];
+                popup_00b176cc5cfa046eee408957a78a322a.setContent(html_1f1b27c005859eefc9a94203a79ea0f4);
+            
+        
+
+        marker_cbbbe236959ff47fbe920fb3bed31bc9.bindPopup(popup_00b176cc5cfa046eee408957a78a322a)
+        ;
+
+        
+    
+    
+            marker_cbbbe236959ff47fbe920fb3bed31bc9.bindTooltip(
+                `<div>
+                     Consegna #29
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cbbbe236959ff47fbe920fb3bed31bc9.setIcon(div_icon_b9609614ef2b1150f1056daae92c6d1c);
+            
+    
+            var marker_390d9b9e2876f33e523e4da4633efd62 = L.marker(
+                [22.597893, 88.438628],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_cffa35415f44819b2a8a0352e98755ec = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e30\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_635a70ef612bed769233bf1dbaa89224 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5cc90029e5ea47d50d52844dd44d055b = $(`<div id="html_5cc90029e5ea47d50d52844dd44d055b" style="width: 100.0%; height: 100.0%;">📦 Consegna #30<br>Package: 3617</div>`)[0];
+                popup_635a70ef612bed769233bf1dbaa89224.setContent(html_5cc90029e5ea47d50d52844dd44d055b);
+            
+        
+
+        marker_390d9b9e2876f33e523e4da4633efd62.bindPopup(popup_635a70ef612bed769233bf1dbaa89224)
+        ;
+
+        
+    
+    
+            marker_390d9b9e2876f33e523e4da4633efd62.bindTooltip(
+                `<div>
+                     Consegna #30
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_390d9b9e2876f33e523e4da4633efd62.setIcon(div_icon_cffa35415f44819b2a8a0352e98755ec);
+            
+    
+            var marker_c417938fd9f0e316c739eea7f3fd5edd = L.marker(
+                [22.637893, 88.478628],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_1e4952d6841432a3ae2d7bc7f1808620 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e31\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_fedfeccd54f8c42bf53cc02ecf519479 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f4c3d13072bbbaeb2da5b3579139d855 = $(`<div id="html_f4c3d13072bbbaeb2da5b3579139d855" style="width: 100.0%; height: 100.0%;">📦 Consegna #31<br>Package: 3600</div>`)[0];
+                popup_fedfeccd54f8c42bf53cc02ecf519479.setContent(html_f4c3d13072bbbaeb2da5b3579139d855);
+            
+        
+
+        marker_c417938fd9f0e316c739eea7f3fd5edd.bindPopup(popup_fedfeccd54f8c42bf53cc02ecf519479)
+        ;
+
+        
+    
+    
+            marker_c417938fd9f0e316c739eea7f3fd5edd.bindTooltip(
+                `<div>
+                     Consegna #31
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c417938fd9f0e316c739eea7f3fd5edd.setIcon(div_icon_1e4952d6841432a3ae2d7bc7f1808620);
+            
+    
+            var marker_fc0568f05b56a4cbd27359d03b55f919 = L.marker(
+                [22.559129, 88.385507],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_fae0804b04b78bc33302db40ffe7f388 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e32\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_311e2de80c18835a1c2c2904890be857 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8a05b1662c3c10191ba5c668f296616a = $(`<div id="html_8a05b1662c3c10191ba5c668f296616a" style="width: 100.0%; height: 100.0%;">📦 Consegna #32<br>Package: 3603</div>`)[0];
+                popup_311e2de80c18835a1c2c2904890be857.setContent(html_8a05b1662c3c10191ba5c668f296616a);
+            
+        
+
+        marker_fc0568f05b56a4cbd27359d03b55f919.bindPopup(popup_311e2de80c18835a1c2c2904890be857)
+        ;
+
+        
+    
+    
+            marker_fc0568f05b56a4cbd27359d03b55f919.bindTooltip(
+                `<div>
+                     Consegna #32
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fc0568f05b56a4cbd27359d03b55f919.setIcon(div_icon_fae0804b04b78bc33302db40ffe7f388);
+            
+    
+            var marker_a7de931f6bf2baf86bc3fcbcbe3e1177 = L.marker(
+                [22.547893, 88.388628],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_3dc8ab27991787e0dbb697af070d06f6 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e33\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_77d03f80814c8a6017b41308419111b7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c4eed9ba23aa785ee8780b6ccf1bcde9 = $(`<div id="html_c4eed9ba23aa785ee8780b6ccf1bcde9" style="width: 100.0%; height: 100.0%;">📦 Consegna #33<br>Package: 3585</div>`)[0];
+                popup_77d03f80814c8a6017b41308419111b7.setContent(html_c4eed9ba23aa785ee8780b6ccf1bcde9);
+            
+        
+
+        marker_a7de931f6bf2baf86bc3fcbcbe3e1177.bindPopup(popup_77d03f80814c8a6017b41308419111b7)
+        ;
+
+        
+    
+    
+            marker_a7de931f6bf2baf86bc3fcbcbe3e1177.bindTooltip(
+                `<div>
+                     Consegna #33
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a7de931f6bf2baf86bc3fcbcbe3e1177.setIcon(div_icon_3dc8ab27991787e0dbb697af070d06f6);
+            
+    
+            var marker_b82c4efac677dceeff113baf7828dabd = L.marker(
+                [25.579872, 81.966167],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_db1895d808cc60c2e62a35d38961a315 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e34\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_7830ad3002894fd633c1fb64130f2732 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cc2e3c9df18ca38306983f5cf4b539d3 = $(`<div id="html_cc2e3c9df18ca38306983f5cf4b539d3" style="width: 100.0%; height: 100.0%;">📦 Consegna #34<br>Package: 3621</div>`)[0];
+                popup_7830ad3002894fd633c1fb64130f2732.setContent(html_cc2e3c9df18ca38306983f5cf4b539d3);
+            
+        
+
+        marker_b82c4efac677dceeff113baf7828dabd.bindPopup(popup_7830ad3002894fd633c1fb64130f2732)
+        ;
+
+        
+    
+    
+            marker_b82c4efac677dceeff113baf7828dabd.bindTooltip(
+                `<div>
+                     Consegna #34
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b82c4efac677dceeff113baf7828dabd.setIcon(div_icon_db1895d808cc60c2e62a35d38961a315);
+            
+    
+            var marker_df82a7294e5c88566503707f6ec44aee = L.marker(
+                [25.530317, 81.911681],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_91287add6b5d80dfbca50cd1b45c027b = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e35\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_9761c474e5585d39bb79d1d5e0d75cd4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_68d86313ed6e70dc01c8f8ef2567da67 = $(`<div id="html_68d86313ed6e70dc01c8f8ef2567da67" style="width: 100.0%; height: 100.0%;">📦 Consegna #35<br>Package: 3596</div>`)[0];
+                popup_9761c474e5585d39bb79d1d5e0d75cd4.setContent(html_68d86313ed6e70dc01c8f8ef2567da67);
+            
+        
+
+        marker_df82a7294e5c88566503707f6ec44aee.bindPopup(popup_9761c474e5585d39bb79d1d5e0d75cd4)
+        ;
+
+        
+    
+    
+            marker_df82a7294e5c88566503707f6ec44aee.bindTooltip(
+                `<div>
+                     Consegna #35
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_df82a7294e5c88566503707f6ec44aee.setIcon(div_icon_91287add6b5d80dfbca50cd1b45c027b);
+            
+    
+            var marker_3d2ab8978d4677893b9c40d28b35728f = L.marker(
+                [25.509872, 81.896167],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_1597d39453a8c823afbd546c096cd1ba = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e36\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_b68fe1ad382cfa77f243e5dd5d78c060 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b6def8df0f7ac4856afb0518a6498f33 = $(`<div id="html_b6def8df0f7ac4856afb0518a6498f33" style="width: 100.0%; height: 100.0%;">📦 Consegna #36<br>Package: 3606</div>`)[0];
+                popup_b68fe1ad382cfa77f243e5dd5d78c060.setContent(html_b6def8df0f7ac4856afb0518a6498f33);
+            
+        
+
+        marker_3d2ab8978d4677893b9c40d28b35728f.bindPopup(popup_b68fe1ad382cfa77f243e5dd5d78c060)
+        ;
+
+        
+    
+    
+            marker_3d2ab8978d4677893b9c40d28b35728f.bindTooltip(
+                `<div>
+                     Consegna #36
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3d2ab8978d4677893b9c40d28b35728f.setIcon(div_icon_1597d39453a8c823afbd546c096cd1ba);
+            
+    
+            var marker_ec063843d416d4e65875fa3f40188ead = L.marker(
+                [25.50235, 81.891889],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_3d0be76ed2100c272bf56ce1a91347d3 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e37\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_43d172a0e50a2d9c08a3414c975a2cde = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_071da8dd77ec79443dff6633fee7be9c = $(`<div id="html_071da8dd77ec79443dff6633fee7be9c" style="width: 100.0%; height: 100.0%;">📦 Consegna #37<br>Package: 3623</div>`)[0];
+                popup_43d172a0e50a2d9c08a3414c975a2cde.setContent(html_071da8dd77ec79443dff6633fee7be9c);
+            
+        
+
+        marker_ec063843d416d4e65875fa3f40188ead.bindPopup(popup_43d172a0e50a2d9c08a3414c975a2cde)
+        ;
+
+        
+    
+    
+            marker_ec063843d416d4e65875fa3f40188ead.bindTooltip(
+                `<div>
+                     Consegna #37
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ec063843d416d4e65875fa3f40188ead.setIcon(div_icon_3d0be76ed2100c272bf56ce1a91347d3);
+            
+    
+            var marker_447c377bc17a7fda2955a113e8fdc778 = L.marker(
+                [25.504697, 81.884492],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_7c5598099c3ef966cd057d8c824fa293 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e38\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_8b02b0deed9c90d4cd5c75bf0e09673c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fc7fb855bbc8f464d2b75edf0097c52e = $(`<div id="html_fc7fb855bbc8f464d2b75edf0097c52e" style="width: 100.0%; height: 100.0%;">📦 Consegna #38<br>Package: 3613</div>`)[0];
+                popup_8b02b0deed9c90d4cd5c75bf0e09673c.setContent(html_fc7fb855bbc8f464d2b75edf0097c52e);
+            
+        
+
+        marker_447c377bc17a7fda2955a113e8fdc778.bindPopup(popup_8b02b0deed9c90d4cd5c75bf0e09673c)
+        ;
+
+        
+    
+    
+            marker_447c377bc17a7fda2955a113e8fdc778.bindTooltip(
+                `<div>
+                     Consegna #38
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_447c377bc17a7fda2955a113e8fdc778.setIcon(div_icon_7c5598099c3ef966cd057d8c824fa293);
+            
+    
+            var marker_08050a0e0a72927c3f45e1cb1663a69c = L.marker(
+                [25.459659, 81.849744],
+                {
+}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            var div_icon_7579c4e6125c63a81a5077eb1f66bd05 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"\n                        background-color: #3388ff;\n                        color: white;\n                        border-radius: 50%;\n                        width: 25px;\n                        height: 25px;\n                        text-align: center;\n                        line-height: 25px;\n                        font-weight: bold;\n                        font-size: 12px;\n                        border: 2px solid white;\n                        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n                    \"\u003e39\u003c/div\u003e\n                    ",
+  "iconSize": [25, 25],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+        var popup_a173e3361fa68b2bdb1172ca6a8215e8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b395299b7a4ac3ed5b4b87fa6a6bcab6 = $(`<div id="html_b395299b7a4ac3ed5b4b87fa6a6bcab6" style="width: 100.0%; height: 100.0%;">📦 Consegna #39<br>Package: 3614</div>`)[0];
+                popup_a173e3361fa68b2bdb1172ca6a8215e8.setContent(html_b395299b7a4ac3ed5b4b87fa6a6bcab6);
+            
+        
+
+        marker_08050a0e0a72927c3f45e1cb1663a69c.bindPopup(popup_a173e3361fa68b2bdb1172ca6a8215e8)
+        ;
+
+        
+    
+    
+            marker_08050a0e0a72927c3f45e1cb1663a69c.bindTooltip(
+                `<div>
+                     Consegna #39
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_08050a0e0a72927c3f45e1cb1663a69c.setIcon(div_icon_7579c4e6125c63a81a5077eb1f66bd05);
+            
+    
+            var poly_line_3d46dfcf1e806c40ed237e3c7b60405f = L.polyline(
+                [[23.558623435897434, 85.25698453846154], [23.446792, 85.346842], [23.446792, 85.346842], [23.424878, 85.385739], [23.424878, 85.385739], [23.419033, 85.385347], [23.417804, 85.385146], [23.417804, 85.385146], [23.429194, 85.395447], [23.439407, 85.405055], [23.445164, 85.414097], [23.467804, 85.435146], [23.463017, 85.4472], [23.485164, 85.454097], [23.489407, 85.455055], [23.546792, 85.446842], [23.52925, 85.520464], [23.403017, 85.3872], [23.399033, 85.365347], [23.389746, 85.35982], [23.384878, 85.345739], [23.379194, 85.345447], [23.379033, 85.345347], [23.375164, 85.344097], [23.374422, 85.3529], [23.374422, 85.3529], [23.369407, 85.335055], [23.343017, 85.3272], [22.608999, 88.392336], [22.613227, 88.413273], [22.597893, 88.438628], [22.637893, 88.478628], [22.559129, 88.385507], [22.547893, 88.388628], [25.579872, 81.966167], [25.530317, 81.911681], [25.509872, 81.896167], [25.50235, 81.891889], [25.504697, 81.884492], [25.459659, 81.849744], [23.558623435897434, 85.25698453846154]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": "10", "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+    
+            poly_line_3d46dfcf1e806c40ed237e3c7b60405f.bindTooltip(
+                `<div>
+                     Percorso GBFS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            ant_path_598bbee48515b1c579cb74684ba1840d = L.polyline.antPath(
+              [[23.558623435897434, 85.25698453846154], [23.446792, 85.346842], [23.446792, 85.346842], [23.424878, 85.385739], [23.424878, 85.385739], [23.419033, 85.385347], [23.417804, 85.385146], [23.417804, 85.385146], [23.429194, 85.395447], [23.439407, 85.405055], [23.445164, 85.414097], [23.467804, 85.435146], [23.463017, 85.4472], [23.485164, 85.454097], [23.489407, 85.455055], [23.546792, 85.446842], [23.52925, 85.520464], [23.403017, 85.3872], [23.399033, 85.365347], [23.389746, 85.35982], [23.384878, 85.345739], [23.379194, 85.345447], [23.379033, 85.345347], [23.375164, 85.344097], [23.374422, 85.3529], [23.374422, 85.3529], [23.369407, 85.335055], [23.343017, 85.3272], [22.608999, 88.392336], [22.613227, 88.413273], [22.597893, 88.438628], [22.637893, 88.478628], [22.559129, 88.385507], [22.547893, 88.388628], [25.579872, 81.966167], [25.530317, 81.911681], [25.509872, 81.896167], [25.50235, 81.891889], [25.504697, 81.884492], [25.459659, 81.849744], [23.558623435897434, 85.25698453846154]],
+              {
+  "stroke": true,
+  "color": "#0066cc",
+  "weight": 2,
+  "opacity": 0.5,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+10,
+20,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "#0066cc",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 1000,
+  "pulseColor": "#ffffff",
+}
+        ).addTo(map_7b56408e40c1f3f97b79620790817e63);
+        
+</script>
+</html>
