@@ -44,7 +44,7 @@ La validazione del modello è stata condotta attraverso verifiche di consistenza
 *   **Analisi Predittiva (Scenario Ottimistico):** Configurando le evidenze su condizioni ideali ("Sole", "Traffico Basso", "Autista Senior"), il sistema restituisce una probabilità di puntualità massimizzata, confermando la coerenza logica delle dipendenze apprese.
 *   **Analisi Diagnostica:** Mediante inferenza inversa (Backwards Reasoning), osservando un evento di "Ritardo" con un "Autista Esperto", il modello aggiorna le credenze sulla variabile non osservata `Road_traffic_density`, assegnando una probabilità maggiore agli stati di traffico intenso (`High` o `Jam`), fornendo così una spiegazione causale plausibile.
 *   **Output:** Il modulo produce stampe dettagliate delle CPT e tabelle comparative delle probabilità per i diversi scenari, salvando infine il dataset processato nel file `bayesian_training_data.csv` per usi futuri.
-
+ß
 ## 5. Log di Esecuzione
 
 Di seguito viene riportato l'output completo generato dal sistema, che illustra il processo di apprendimento e i risultati delle inferenze.
@@ -265,7 +265,7 @@ Fog          | High     | Giovane    |       96.0%
 
 ======================================================================
 📊 ANALISI AGGIUNTIVE
-======================================================================
+=================================================================å=====
 
 🌤️  Effetto del METEO sul rischio di ritardo:
 --------------------------------------------------
@@ -277,7 +277,7 @@ Meteo           | P(Ritardo)   | P(Puntuale)  | Rischio
 🏜️ Sandstorms   |       77.4% |       22.6% | 🔴 ALTO
 ⛈️ Stormy       |       77.3% |       22.7% | 🔴 ALTO
 ☀️ Sunny        |       59.0% |       41.0% | 🔴 ALTO
-💨 Windy        |       77.5% |       22.5% | 🔴 ALTO
+💨 Windy        |       77.5% |     å  22.5% | 🔴 ALTO
 
 
 👤 Effetto dell'ESPERIENZA dell'autista:
