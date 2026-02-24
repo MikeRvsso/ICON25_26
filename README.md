@@ -1,4 +1,4 @@
-# Progetto per Fondamenti di Intelligenza Artificiale (ICON 2024/2025)
+# Progetto per Ingegneria della Conoscenza(ICON 2024/2025)
 
 Questo repository contiene il progetto finale per il corso di **Ingegneria della Conoscenza (ICON)**, sviluppato in Python e Prolog. L'obiettivo del progetto è applicare svariate tecniche e algoritmi di Intelligenza Artificiale su un dataset reale riguardante le consegne di Amazon, per analizzare dati, ottimizzare processi decisionali e prevedere tempi e caratteristiche di consegna.
 
